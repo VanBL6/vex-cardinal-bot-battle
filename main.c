@@ -35,21 +35,21 @@ task main()
 		motor[rightMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;  // (y - x)/2
 
 		//Arm Control with Remote Control 2
-		if(vexRT[Btn5UXmtr2] == 1)       	//If button 5U is pressed...
+		if(vexRT[Btn5UXmtr2] == 1)       	//If button 5U is pressed... when button 5 (topleft)is pressed  
 		{
-			motor[armMotor] = 127;    	//...raise the arm.
+			motor[armMotor] = 127;    	//...raise the arm... 
 		}
-		else if(vexRT[Btn5DXmtr2] == 1)  	//Else, if button 5D is pressed...
+		else if(vexRT[Btn5DXmtr2] == 1)  	//Else, if button 5D (bottom left) is pressed...
 		{
 			motor[armMotor] = -127;   	//...lower the arm.
 		}
 		else                      		//Else (neither button is pressed)...
 		{
-			motor[armMotor] = 0;      	//...stop the arm.
+			motor[armMotor] = 0;      	//...don't move the arm.
 		}
 
 		// Open, close or do not move claw
-		if(vexRT[Btn6UXmtr2] == 1)       	//If Button 6U is pressed...
+		if(vexRT[Btn6UXmtr2] == 1)       	//If Button 6U(top right) is pressed...
 		{
 			motor[clawMotor] = 127;  		//...close the gripper.
 		}
@@ -59,8 +59,16 @@ task main()
 		}
 		else                      		//Else (neither button is pressed)...
 		{
-			motor[clawMotor] = 0;    		//...stop the gripper.
+			motor[clawMotor] = 0;  //...stop the gripper.
+		if (vexRT[Btn8RXmtr2] ==1 )			// If button 8R is pressed
+		{
+			motor[wheelMotor]== 127*2;		// Rotate the wheel at full speed
+		}
+		else // if the 8R button is not pressed
+		{
+			motor[WheelMotor]== 0 //don't rotate the wheel atfull speed
 		}
 	}
 }
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
